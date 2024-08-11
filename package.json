@@ -7,11 +7,18 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.tsx\"",
+    "format:check": "prettier --check \"src/**/*.ts\" \"src/**/*.tsx\"",
+    "check:types": "tsc --pretty --noEmit",
+    "test:all": "yarn check:types && yarn format:check && yarn lint"
   },
   "dependencies": {
+    "classnames": "^2.5.1",
+    "path": "^0.12.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-feather": "^2.0.10",
     "react-router-dom": "^6.26.0"
   },
   "devDependencies": {
