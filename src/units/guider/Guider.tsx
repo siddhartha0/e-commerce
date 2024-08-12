@@ -17,7 +17,7 @@ export const Guider = React.memo(
     textSize = "text-xl",
     fontWeight = "font-[500]",
     textColor = "#111111",
-    animationProps = "animate-jiggle",
+    animationProps = "animate-pulsing",
     ...other
   }: guiderPropsTypes) => {
     return (

@@ -195,6 +195,11 @@ module.exports = {
         "50%": { transform: "scale(1.1)", filter: "brightness(90%)" },
         "100%": { transform: "scale(1)", filter: "brightness(70%)" },
       },
+      float: {
+        "0%": { transform: "translateY(0)" },
+        "50%": { transform: "translateY(-10px)" },
+        "100%": { transform: "translateY(0)" },
+      },
     },
     animation: {
       fadeindown: "fade-in-down 1s ease-in 0.25s 1",
@@ -204,6 +209,7 @@ module.exports = {
       jiggle: "jiggle 0.6s ease-in-out 0.25s 1",
       scale: "scale .8s ease-in-out both",
       pulsing: "pulsing 1s ease-in-out both",
+      float: "float 1s ease-in-out both",
     },
   },
   plugins: [],

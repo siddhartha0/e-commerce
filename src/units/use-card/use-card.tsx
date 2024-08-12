@@ -10,11 +10,11 @@ interface cardUserProps {
 }
 
 export const CardUse = React.memo(
-  ({ imgUrl, header, article, icon }: cardUserProps) => {
+  ({ imgUrl, header, article }: cardUserProps) => {
     return (
       <main>
         <Card
-          className="hover:animate-pulsing hover:cursor-pointer z-0"
+          className="hover:animate-pulsing hover:cursor-pointer z-0 "
           style={{
             backgroundImage: `url(${imgUrl})`,
             backgroundRepeat: "no-repeat",
@@ -22,7 +22,7 @@ export const CardUse = React.memo(
           }}
         />
 
-        <div className="flex flex-col  place-items-start p-3   absolute bottom-16  z-10 ">
+        <div className=" group flex flex-col  place-items-start p-3   absolute bottom-4 hover:bottom-16 hover:animate-float z-10  ">
           <BigTextInfo
             title={header}
             textColor="#111111"
@@ -32,10 +32,27 @@ export const CardUse = React.memo(
 
           <TextInfo title={article} textColor="#111111" />
 
-          <Button className="flex place-items-center bg-white mt-10 outline-none font-[500] p-4 max-w-56 gap-2 rounded-3xl hover:animate-jiggle">
-            <TextInfo title="Shop Now" textColor="black" />
-            <Icon name={icon} />
-          </Button>
+          <section className="flex gap-4 invisible group-hover:visible group-hover:animate-jiggle">
+            <div className="group/item">
+              <TextInfo
+                title="Add to Cart"
+                className="invisible bg-dark p-2 font-thin text-sm  group-hover/item:visible -mb-8 mr-2 mt-2 group-hover:animate-fadeindown"
+              />
+              <Button className=" flex place-items-center bg-white mt-10 outline-none font-[500] p-4 max-w-56 gap-2 rounded-lg hover:animate-jiggle">
+                <Icon name={icon.ShoppingCart} />
+              </Button>
+            </div>
+
+            <div className="group/item">
+              <TextInfo
+                title="Add to Wishlist"
+                className="invisible bg-dark p-2 font-thin text-sm  group-hover/item:visible -mb-8 mr-2 mt-2 group-hover:animate-fadeindown"
+              />
+              <Button className="flex place-items-center bg-white mt-10 outline-none font-[500] p-4 max-w-56 gap-2 rounded-lg hover:animate-jiggle ">
+                <Icon name={icon.ThumbsUp} />
+              </Button>
+            </div>
+          </section>
         </div>
       </main>
     );
