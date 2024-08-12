@@ -15,7 +15,7 @@ export const ScrollBarContext = createContext<scrollBarContextTypes | null>(
 
 export const ScrollBarContent = ({ children }: scrollBarContentType) => {
   const [upMotionScrolledStatus, setUpMotionScrolledStatus] =
-    useState<boolean>(false);
+    useState<boolean>(true);
 
   return (
     <ScrollBarContext.Provider
@@ -31,8 +31,5 @@ export const ScrollBarContent = ({ children }: scrollBarContentType) => {
 
 export const useScrollBarContent = () => {
   const scrollContext = useContext(ScrollBarContext);
-  //   if (!scrollContext) {
-  //     throw new Error("Some thing went wrong");
-  //   }
   return scrollContext;
 };

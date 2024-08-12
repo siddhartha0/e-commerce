@@ -1,22 +1,20 @@
-import { Link } from "react-router-dom";
 import { default as companyLogo } from "../../assets/images/2.png";
+import { useScrollBarContent } from "../../constant/context-hooks/ScrollBarContext";
 import { HeaderIconPath, HeaderPath } from "../../constant/index";
-import { Icon } from "../index";
-import classnames from "classnames";
+import { Guider, Icon, Navbar } from "../../units/index";
 import { useEffect, useState } from "react";
-type headerProps = {
-  UpMotionScrolledStatus: boolean | null;
-};
 
-const Header = ({ UpMotionScrolledStatus }: headerProps) => {
-  // const [UpMotionScrolledStatus, setUpMotionScrolledStatus] = useState(true);
+const Header = () => {
+  const scrollContext = useScrollBarContent();
+
   const [shouldRender, setShouldRender] = useState(true); // Controls whether to render the component
   const [animationClass, setAnimationClass] = useState("");
 
   useEffect(() => {
-    if (UpMotionScrolledStatus) {
+    if (scrollContext?.upMotionScrolledStatus) {
       // Fade in when showing
       setShouldRender(true);
+
       setAnimationClass("animate-fadeindown");
     } else {
       // Fade out when hiding
@@ -29,45 +27,33 @@ const Header = ({ UpMotionScrolledStatus }: headerProps) => {
 
       return () => clearTimeout(timeout);
     }
-  }, [UpMotionScrolledStatus]);
+  }, [scrollContext?.upMotionScrolledStatus]);
 
   if (!shouldRender) return null;
 
   return (
-    <div
-      className={classnames(
-        "w-[100%] sticky flex top-0 justify-between p-8 bg-white z-10",
-        animationClass
-      )}
-    >
+    <Navbar animationClass={animationClass}>
       <section className="w-44 -mt-[4.1rem] h-6">
         <img src={companyLogo} alt="img" />
       </section>
 
       <section className="flex gap-12 font-[500] text-lg ">
         {HeaderPath.map((path) => (
-          <Link
+          <Guider
             key={path.id + path.title}
-            to={path.title}
-            className="hover:animate-jiggle"
-          >
-            {path.title}
-          </Link>
+            path={path.path}
+            title={path.title}
+            textSize="text-lg"
+          />
         ))}
       </section>
 
       <section className="flex gap-6">
         {HeaderIconPath.map((icon) => (
-          <Icon
-            key={icon.id + icon.path}
-            name={icon.title}
-            size={26}
-            color="#0c0c0c"
-            className=" hover:animate-jiggle"
-          />
+          <Icon key={icon.id + icon.path} name={icon.title} />
         ))}
       </section>
-    </div>
+    </Navbar>
   );
 };
 
