@@ -1,6 +1,7 @@
-import { BigTextInfo, CardUse } from "../../units";
-import { CardDatas } from "../../constant/data/CardData";
 import React from "react";
+import { BigTextInfo } from "../../units";
+import { CardDatas } from "../../constant/index";
+import { CardUse } from "../index";
 
 export const MidSection = React.memo(() => {
   return (
@@ -20,7 +21,6 @@ export const MidSection = React.memo(() => {
             key={data.id + data.imgUrl}
             article={data.article}
             header={data.header}
-            icon={data.icon}
             imgUrl={data.imgUrl}
           />
         ))}
