@@ -49,8 +49,12 @@ const Header = () => {
       </section>
 
       <section className="flex gap-6">
-        {HeaderIconPath.map((icon) => (
-          <Icon key={icon.id + icon.path} name={icon.title} />
+        {HeaderIconPath.map((icon, i) => (
+          <Icon
+            key={icon.id + icon.path}
+            name={icon.title}
+            textColor={i == 0 ? "#E30677" : i === 1 ? "#56014F" : "#111111"}
+          />
         ))}
       </section>
     </Navbar>
